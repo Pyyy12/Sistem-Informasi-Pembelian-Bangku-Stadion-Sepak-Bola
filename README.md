@@ -1,58 +1,54 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <h1 align="center">🏟️ Stadium Ticket Booking System (Laravel 11)</h1>
+  <p align="center">Sistem visualisasi denah kursi stadion dan reservasi tiket berbasis web.</p>
 </p>
 
-## About Laravel
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel 11">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Alpine.js-8BC0D0?style=for-the-badge&logo=alpine.js&logoColor=white" alt="Alpine JS">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License">
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 Tentang Proyek
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Aplikasi penjualan tiket pertandingan stadion dengan visualisasi interaktif denah kursi (*seat map*). Sistem ini mengadopsi mekanisme pemilihan kursi bioskop dengan dua mode akses:
 
-## Learning Laravel
+- **Mode Pelanggan (Online Ala Bioskop):** Pengguna memilih kursi yang diinginkan langsung dengan klik pada bangku berwarna merah, memasukkan data pemesan, dan melakukan checkout.
+- **Mode Admin (Drag & Drop POS):** Kasir/Admin di loket fisik dapat menyeret (*drag*) bangku merah yang kosong ke area keranjang kasir untuk transaksi langsung (*on the spot*).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Indikator Status Kursi
+| Warna | Status | Keterangan |
+| :---: | :---: | :--- |
+| 🔴 **Merah** | **Kosong (Available)** | Kursi bebas dipilih (Customer) atau diseret ke kasir (Admin). |
+| 🟡 **Kuning** | **Dipilih (Selected)** | Kursi yang sedang Anda pilih sebelum checkout (Mode Customer). |
+| 🟢 **Hijau** | **Terisi (Booked)** | Kursi sudah terjual / terisi dan terkunci otomatis. |
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🚀 Fitur Utama
 
-## Agentic Development
+- **Pencegahan Double-Booking:** Dilengkapi mekanisme `lockForUpdate()` pada transaksi database untuk mengunci kursi saat checkout bersamaan.
+- **Drag & Drop POS:** Integrasi native HTML5 Drag and Drop API dengan state management Alpine.js untuk kemudahan loket tiket.
+- **Denah Interaktif:** Penataan layout visual berdasarkan Tribun, Baris (Row), dan Nomor Kursi (Seat Number).
+- **Responsive & Modern:** Menggunakan Tailwind CSS responsif dan antarmuka bertema stadion gelap (*dark stadium theme*).
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+## 🛠️ Persyaratan Sistem
 
-php artisan boost:install
-```
+- PHP >= 8.2
+- Composer
+- MySQL / MariaDB / PostgreSQL
+- Node.js & NPM (Opsional jika ingin build aset secara lokal)
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## ⚙️ Panduan Instalasi
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. **Clone repository ini:**
+   ```bash
+   git clone [https://github.com/username-anda/stadium-ticketing.git](https://github.com/username-anda/stadium-ticketing.git)
+   cd stadium-ticketing
